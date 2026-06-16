@@ -1,0 +1,121 @@
+/* ═══════════════════════════════════════
+   MODALS
+═══════════════════════════════════════ */
+
+.modal-bg {
+  display: none;
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 50;
+  align-items: flex-end;
+}
+
+.modal-bg.open {
+  display: flex;
+}
+
+.msheet {
+  background: var(--card-bg);
+  border-radius: 22px 22px 0 0;
+  padding: 18px 16px 32px;
+  width: 100%;
+  max-height: 88%;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.msheet::-webkit-scrollbar { display: none; }
+
+.mtop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.mtitle {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text1);
+}
+
+.mclose {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #f2f2f7;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--text2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mclose:hover { background: var(--border); }
+
+/* ── Modal Task/Alert highlight block ── */
+.modal-highlight {
+  background: #f5f5f7;
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 14px;
+}
+
+.modal-highlight-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text1);
+  margin-bottom: 4px;
+}
+
+/* ── Assignee Block ── */
+.assignee-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f5f5f7;
+  border-radius: 12px;
+  padding: 12px;
+  margin-top: 8px;
+}
+
+.assignee-name { font-weight: 600; font-size: 14px; color: var(--text1); }
+.assignee-role { font-size: 12px; color: var(--text2); }
+.assignee-email { font-size: 11px; color: var(--text2); }
+
+/* ── Alert detail body ── */
+.alert-detail-block {
+  background: #f5f5f7;
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+.alert-detail-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.alert-detail-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text1);
+  line-height: 1.35;
+}
+
+.alert-detail-body {
+  font-size: 13px;
+  color: #3a3a3a;
+  line-height: 1.6;
+}
+
+.alert-detail-time {
+  font-size: 12px;
+  color: var(--text2);
+  text-align: right;
+}
