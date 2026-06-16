@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mesa – Task Manager</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/workload.css">
+  <link rel="stylesheet" href="css/modals.css">
+</head>
+<body>
+
+  <!-- Role Switcher (demo only) -->
+  <div class="role-switcher" id="role-switcher">
+    <button class="rs-btn active" id="btn-manager" onclick="switchRole('manager')">👔 Manager</button>
+    <button class="rs-btn" id="btn-employee" onclick="switchRole('employee')">👤 Employee</button>
+  </div>
+
+  <!-- Phone Shell -->
+  <div class="phone-wrap">
+    <div class="phone" id="phone">
+
+      <!-- Status Bar -->
+      <div class="status-bar">
+        <span class="role-chip" id="role-label">MANAGER</span>
+        <span class="time">12:20</span>
+        <span class="signal">●●● 🔋</span>
+      </div>
+
+      <!-- Scrollable Screen -->
+      <div class="screen" id="screen">
+
+        <!-- ═══════════════════════════
+             MANAGER PAGES
+        ═══════════════════════════ -->
+
+        <!-- Dashboard -->
+        <div class="page active" id="pg-m-dash">
+          <div class="page-header">
+            <div class="pg-title">Dashboard</div>
+          </div>
+          <div class="snav">
+            <div class="snav-pill active" id="dpill-overview" onclick="switchDashTab('overview')">Overview</div>
+            <div class="snav-pill" id="dpill-workload" onclick="switchDashTab('workload')">Workload Balance</div>
+          </div>
+
+          <!-- Overview Tab -->
+          <div id="dash-overview">
+            <div class="greeting-card">
+              <div class="g-name">Good Morning, James</div>
+              <div class="g-sub">3 items require attention</div>
+            </div>
+            <div class="stat-grid">
+              <div class="stat-box"><div class="stat-icon purple"><i class="ti ti-chart-bar"></i></div><div><div class="stat-num">6</div><div class="stat-lbl">Total</div></div></div>
+              <div class="stat-box"><div class="stat-icon green"><i class="ti ti-check"></i></div><div><div class="stat-num green">1</div><div class="stat-lbl">Completed</div></div></div>
+              <div class="stat-box"><div class="stat-icon amber"><i class="ti ti-clock"></i></div><div><div class="stat-num amber">2</div><div class="stat-lbl">Pending</div></div></div>
+              <div class="stat-box"><div class="stat-icon red"><i class="ti ti-alert-circle"></i></div><div><div class="stat-num red">1</div><div class="stat-lbl">Overdue</div></div></div>
+            </div>
+            <div class="card">
+              <div class="sec-hd"><i class="ti ti-users"></i>Team Progress</div>
+              <div class="meta-txt">Completion Rate</div>
+              <div class="prog-track"><div class="prog-fill" style="width:17%"></div></div>
+              <div class="pct-lbl">17%</div>
+            </div>
+            <div class="card">
+              <div class="sec-hd amber"><i class="ti ti-alert-triangle"></i>Needs Attention</div>
+              <div class="list-row"><div class="list-dot amber"></div><span>Leave Request – Sarah</span></div>
+              <div class="list-row"><div class="list-dot amber"></div><span>Missing Punch – Michael</span></div>
+              <div class="list-row"><div class="list-dot amber"></div><span>Training Approval – Emily</span></div>
+            </div>
+            <div class="card">
+              <div class="sec-hd"><i class="ti ti-check" style="color:#30D158"></i>Recent Activity</div>
+              <div class="list-row"><i class="ti ti-circle-check green-icon"></i><span>Sarah completed training</span></div>
+              <div class="list-row"><i class="ti ti-circle-check green-icon"></i><span>Michael submitted leave</span></div>
+              <div class="list-row"><i class="ti ti-circle-check green-icon"></i><span>Emily started onboarding</span></div>
+              <div class="list-row"><i class="ti ti-circle-check green-icon"></i><span>John completed task</span></div>
+            </div>
+            <div class="card">
+              <div class="sec-hd"><i class="ti ti-users"></i>Team Overview</div>
+              <div style="display:flex;gap:24px">
+                <div><div class="big-num">7</div><div class="meta-txt">Employees</div></div>
+                <div><div class="big-num">6</div><div class="meta-txt">Active Tasks</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Workload Balance Tab -->
+          <div id="dash-workload" style="display:none">
+            <div class="wl-summary-grid" id="wl-summary"></div>
+            <div class="wl-legend">
+              <div class="wl-legend-item"><div class="wl-dot" style="background:#E24B4A"></div>Overloaded</div>
+              <div class="wl-legend-item"><div class="wl-dot" style="background:#EF9F27"></div>Medium</div>
+              <div class="wl-legend-item"><div class="wl-dot" style="background:#30D158"></div>Available</div>
+            </div>
+            <div class="snav">
+              <div class="snav-pill active" id="wlp-viz" onclick="switchWlTab('viz')">Workload</div>
+              <div class="snav-pill" id="wlp-alerts" onclick="switchWlTab('alerts')">Alerts</div>
+              <div class="snav-pill" id="wlp-benefits" onclick="switchWlTab('benefits')">Benefits</div>
+            </div>
+            <div id="wl-viz"><div id="wl-emp-bars"></div></div>
+            <div id="wl-alerts" style="display:none"><div id="wl-alert-list"></div></div>
+            <div id="wl-benefits" style="display:none">
+              <div class="benefit-card">
+                <div class="sec-hd"><i class="ti ti-info-circle"></i>Why Workload Balance Matters</div>
+                <div class="benefit-row"><div class="benefit-icon red-bg"><i class="ti ti-flame red-icon"></i></div><div><div class="benefit-title">Prevent Burnout</div><div class="benefit-desc">Distribute tasks evenly to protect team well-being and reduce burnout risk.</div></div></div>
+                <div class="benefit-row"><div class="benefit-icon purple-bg"><i class="ti ti-scale purple-icon"></i></div><div><div class="benefit-title">Fairness</div><div class="benefit-desc">No single employee carries a disproportionate share of the workload.</div></div></div>
+                <div class="benefit-row"><div class="benefit-icon green-bg"><i class="ti ti-rocket green-icon"></i></div><div><div class="benefit-title">Better Productivity</div><div class="benefit-desc">Balanced teams deliver faster and with higher quality.</div></div></div>
+                <div class="benefit-row"><div class="benefit-icon amber-bg"><i class="ti ti-eye amber-icon"></i></div><div><div class="benefit-title">Improved Utilization</div><div class="benefit-desc">Visibility into idle vs. overloaded employees helps workforce planning.</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tasks -->
+        <div class="page" id="pg-m-tasks">
+          <div class="page-header">
+            <div class="pg-title">Tasks</div>
+            <button class="add-btn" onclick="openModal('new-task-modal')"><i class="ti ti-plus"></i></button>
+          </div>
+          <div class="filters" id="m-task-filters">
+            <div class="fpill active" onclick="filterMgrTasks('All',this)">All</div>
+            <div class="fpill" onclick="filterMgrTasks('In Progress',this)">In Progress</div>
+            <div class="fpill" onclick="filterMgrTasks('Not Started',this)">Not Started</div>
+            <div class="fpill" onclick="filterMgrTasks('Completed',this)">Completed</div>
+          </div>
+          <div class="card card-list" id="mgr-task-list"></div>
+        </div>
+
+        <!-- Employees -->
+        <div class="page" id="pg-m-employees">
+          <div class="page-header">
+            <div class="pg-title">My Employees</div>
+            <button class="add-btn" onclick="openModal('add-emp-modal')"><i class="ti ti-plus"></i></button>
+          </div>
+          <div class="search-wrap">
+            <i class="ti ti-search search-icon"></i>
+            <input class="search-input" placeholder="Search" oninput="renderEmps(this.value)">
+          </div>
+          <div id="emp-list"></div>
+        </div>
+
+        <!-- Recognition -->
+        <div class="page" id="pg-m-recog">
+          <div class="pg-title">Recognition Hub</div>
+          <div class="snav">
+            <div class="snav-pill active" id="rp-give" onclick="switchRecog('give')">Give</div>
+            <div class="snav-pill" id="rp-feed" onclick="switchRecog('feed')">Feed</div>
+            <div class="snav-pill" id="rp-analytics" onclick="switchRecog('analytics')">Analytics</div>
+          </div>
+          <div id="r-give">
+            <div class="card">
+              <div class="sec-hd"><i class="ti ti-star amber-icon"></i>Recognize a team member</div>
+              <select class="inp"><option>Select employee…</option><option>Emily J. Lee</option><option>Michael D. Brown</option><option>Sarah K. Patel</option><option>David M. Brooks</option><option>Lauren R. Davis</option></select>
+              <select class="inp"><option>Recognition type…</option><option>Above &amp; Beyond</option><option>Team Player</option><option>Innovation</option><option>Leadership</option><option>Culture Champion</option></select>
+              <textarea class="inp" rows="3" placeholder="Write a personal message…" style="resize:none"></textarea>
+              <button class="btn-p" onclick="toast('Recognition sent! 🎉')">Send Recognition</button>
+            </div>
+            <div class="card">
+              <div class="sec-hd"><i class="ti ti-trophy amber-icon"></i>Monthly Awards</div>
+              <div class="meta-txt" style="margin-bottom:10px">June 2026 nominations open</div>
+              <div class="award-row"><div><div class="award-title">Employee of the Month</div><div class="meta-txt">3 nominees</div></div><button class="btn-o" onclick="toast('Nomination submitted!')">Nominate</button></div>
+              <div class="award-row" style="margin-bottom:0"><div><div class="award-title">Rising Star</div><div class="meta-txt">1 nominee</div></div><button class="btn-o" onclick="toast('Nomination submitted!')">Nominate</button></div>
+            </div>
+          </div>
+          <div id="r-feed" style="display:none"></div>
+          <div id="r-analytics" style="display:none">
+            <div class="card"><div class="sec-hd"><i class="ti ti-chart-bar"></i>Top Contributors</div><div id="top-contrib"></div></div>
+            <div class="card"><div class="sec-hd"><i class="ti ti-building"></i>Active Departments</div><div id="dept-bars"></div></div>
+            <div class="card"><div class="sec-hd"><i class="ti ti-award amber-icon"></i>Most Recognized</div><div id="most-recog"></div></div>
+          </div>
+        </div>
+
+        <!-- Profile (Manager) -->
+        <div class="page" id="pg-m-profile">
+          <div class="pg-title">My Profile</div>
+          <div class="prof-hero">
+            <div class="prof-av">JA</div>
+            <div class="prof-name">James Al-Rashid</div>
+            <div class="prof-role">Operations Manager</div>
+            <div class="prof-badge">Manager</div>
+          </div>
+          <div class="card">
+            <div class="sect-label">Account</div>
+            <div class="info-row"><i class="ti ti-mail"></i><div class="info-lbl">Email</div><div class="info-val">j.alrashid@mesa.com</div></div>
+            <div class="info-row"><i class="ti ti-phone"></i><div class="info-lbl">Phone</div><div class="info-val">+1 555-0010</div></div>
+          </div>
+          <button class="signout-b" onclick="toast('Signed out')"><i class="ti ti-logout"></i>Sign out</button>
+        </div>
+
+        <!-- ═══════════════════════════
+             EMPLOYEE PAGES
+        ═══════════════════════════ -->
+
+        <!-- Home -->
+        <div class="page" id="pg-e-home">
+          <div class="greeting-card">
+            <div class="g-name">Hello Sarah</div>
+            <div class="g-sub">Have a productive day today</div>
+            <button class="notif-btn" onclick="goTo('e-alerts')" id="notif-btn">
+              <span class="notif-dot"></span>
+              <span id="notif-count-label">2 Notifications</span>
+              <i class="ti ti-chevron-right" style="margin-left:auto;font-size:14px"></i>
+            </button>
+          </div>
+          <div class="card">
+            <div class="sec-hd"><i class="ti ti-chart-line"></i>My Progress</div>
+            <div class="prog-track"><div class="prog-fill" style="width:80%"></div></div>
+            <div class="pct-lbl">80%</div>
+            <div class="meta-txt" style="margin-top:2px">8 of 10 tasks completed</div>
+          </div>
+          <div class="priority-card">
+            <div class="sec-hd"><i class="ti ti-star amber-icon"></i>My Priority Task</div>
+            <div class="priority-title">Conduct Training</div>
+            <div class="meta-txt" style="margin:4px 0">Due: June 14</div>
+            <span class="sbadge si">In Progress</span>
+          </div>
+          <div class="card">
+            <div class="sec-hd"><i class="ti ti-list-check"></i>My Active Tasks</div>
+            <div id="emp-home-tasks"></div>
+          </div>
+        </div>
+
+        <!-- My Tasks -->
+        <div class="page" id="pg-e-tasks">
+          <div class="pg-title">My Tasks</div>
+          <div class="filters" id="e-task-filters">
+            <div class="fpill active" onclick="filterEmpTasks('All',this)">All</div>
+            <div class="fpill" onclick="filterEmpTasks('In Progress',this)">In Progress</div>
+            <div class="fpill" onclick="filterEmpTasks('Not Started',this)">Not Started</div>
+            <div class="fpill" onclick="filterEmpTasks('Completed',this)">Completed</div>
+          </div>
+          <div class="card card-list" id="emp-task-list"></div>
+        </div>
+
+        <!-- Alerts -->
+        <div class="page" id="pg-e-alerts">
+          <div class="pg-title">Alerts</div>
+          <div class="card card-list" id="alerts-list"></div>
+        </div>
+
+        <!-- Profile (Employee) -->
+        <div class="page" id="pg-e-profile">
+          <div class="pg-title">My Profile</div>
+          <div class="prof-hero">
+            <div class="prof-av">SK</div>
+            <div class="prof-name">Sarah K. Patel</div>
+            <div class="prof-role">Designer</div>
+          </div>
+          <div class="card">
+            <div class="sect-label">Account</div>
+            <div class="info-row"><i class="ti ti-mail"></i><div class="info-lbl">Email</div><div class="info-val">sarah.patel@mesa.com</div></div>
+            <div class="info-row"><i class="ti ti-phone"></i><div class="info-lbl">Phone</div><div class="info-val">+1 555-0103</div></div>
+          </div>
+          <button class="signout-b" onclick="toast('Signed out')"><i class="ti ti-logout"></i>Sign out</button>
+        </div>
+
+      </div><!-- /screen -->
+
+      <!-- Bottom Nav -->
+      <div class="bottom-nav" id="bottom-nav"></div>
+
+      <!-- ═══════════════════════════
+           MODALS
+      ═══════════════════════════ -->
+
+      <!-- Employee Detail Modal -->
+      <div class="modal-bg" id="emp-detail-modal">
+        <div class="msheet">
+          <div class="mtop"><div class="mtitle" id="ed-title"></div><button class="mclose" onclick="closeModal('emp-detail-modal')"><i class="ti ti-x"></i></button></div>
+          <div id="ed-body"></div>
+          <button class="btn-p ghost" onclick="closeModal('emp-detail-modal')">Close</button>
+        </div>
+      </div>
+
+      <!-- Add Employee Modal -->
+      <div class="modal-bg" id="add-emp-modal">
+        <div class="msheet">
+          <div class="mtop"><div class="mtitle">Add Employee</div><button class="mclose" onclick="closeModal('add-emp-modal')"><i class="ti ti-x"></i></button></div>
+          <input class="inp" id="ae-name" placeholder="Full name…">
+          <input class="inp" id="ae-role" placeholder="Job title / role…">
+          <input class="inp" id="ae-email" placeholder="Email address…">
+          <input class="inp" id="ae-phone" placeholder="Phone number…">
+          <select class="inp" id="ae-dept">
+            <option value="">Department…</option>
+            <option>Engineering</option><option>Design</option><option>HR</option><option>Sales</option><option>Operations</option>
+          </select>
+          <button class="btn-p" onclick="addEmployee()">Add Employee</button>
+        </div>
+      </div>
+
+      <!-- New Task Modal -->
+      <div class="modal-bg" id="new-task-modal">
+        <div class="msheet">
+          <div class="mtop"><div class="mtitle">New Task</div><button class="mclose" onclick="closeModal('new-task-modal')"><i class="ti ti-x"></i></button></div>
+          <input class="inp" id="nt-title" placeholder="Task title…">
+          <select class="inp" id="nt-assignee"><option value="">Assign to…</option></select>
+          <select class="inp" id="nt-priority"><option value="">Priority…</option><option>High</option><option>Medium</option><option>Low</option></select>
+          <input class="inp" type="date" id="nt-due">
+          <textarea class="inp" rows="2" placeholder="Notes…" style="resize:none"></textarea>
+          <button class="btn-p" onclick="addTask()">Create Task</button>
+        </div>
+      </div>
+
+      <!-- Task Detail Modal (Manager) -->
+      <div class="modal-bg" id="task-detail-modal">
+        <div class="msheet">
+          <div class="mtop"><div class="mtitle">Task Details</div><button class="mclose" onclick="closeModal('task-detail-modal')"><i class="ti ti-x"></i></button></div>
+          <div id="td-body"></div>
+          <button class="btn-p ghost" onclick="closeModal('task-detail-modal')">Close</button>
+        </div>
+      </div>
+
+      <!-- Task Detail Modal (Employee) -->
+      <div class="modal-bg" id="emp-task-modal">
+        <div class="msheet">
+          <div class="mtop"><div class="mtitle">Task Details</div><button class="mclose" onclick="closeModal('emp-task-modal')"><i class="ti ti-x"></i></button></div>
+          <div id="etd-body"></div>
+          <div style="margin-top:12px">
+            <div class="sect-label" style="margin-bottom:6px">Update Status</div>
+            <select class="status-select" id="emp-status-sel" onchange="updateEmpTaskStatus(this)"></select>
+          </div>
+          <button class="btn-p" style="margin-top:12px" onclick="closeModal('emp-task-modal')">Save &amp; Close</button>
+        </div>
+      </div>
+
+      <!-- Alert Detail Modal -->
+      <div class="modal-bg" id="alert-detail-modal">
+        <div class="msheet">
+          <div class="mtop"><div class="mtitle">Alert</div><button class="mclose" onclick="closeModal('alert-detail-modal')"><i class="ti ti-x"></i></button></div>
+          <div id="alert-body"></div>
+          <button class="btn-p ghost" onclick="closeModal('alert-detail-modal')">Dismiss</button>
+        </div>
+      </div>
+
+      <!-- Workload Detail Modal -->
+      <div class="modal-bg" id="wl-emp-modal">
+        <div class="msheet">
+          <div class="mtop"><div class="mtitle" id="wl-modal-title">Workload</div><button class="mclose" onclick="closeModal('wl-emp-modal')"><i class="ti ti-x"></i></button></div>
+          <div id="wl-modal-body"></div>
+          <button class="btn-p ghost" onclick="closeModal('wl-emp-modal')">Close</button>
+        </div>
+      </div>
+
+      <!-- Toast -->
+      <div class="toast" id="toast-el"></div>
+
+    </div><!-- /phone -->
+  </div><!-- /phone-wrap -->
+
+  <!-- JS Modules -->
+  <script src="js/data.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/tasks.js"></script>
+  <script src="js/employees.js"></script>
+  <script src="js/recognition.js"></script>
+  <script src="js/workload.js"></script>
+  <script src="js/employee-view.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
