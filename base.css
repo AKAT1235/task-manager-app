@@ -1,0 +1,353 @@
+/* ═══════════════════════════════════════
+   BASE — Reset, Layout, Phone Shell
+═══════════════════════════════════════ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  --accent:       #5B4FD9;
+  --accent-light: #EEEDFE;
+  --accent-mid:   #7F77DD;
+  --bg:           #f5f5f7;
+  --card-bg:      #ffffff;
+  --border:       #e5e5ea;
+  --text1:        #1c1c1e;
+  --text2:        #8e8e93;
+  --text3:        #c7c7cc;
+  --success:      #30D158;
+  --success-bg:   #EAF3DE;
+  --success-text: #3B6D11;
+  --warn:         #EF9F27;
+  --warn-bg:      #FAEEDA;
+  --warn-text:    #854F0B;
+  --danger:       #E24B4A;
+  --danger-bg:    #FCEBEB;
+  --danger-text:  #A32D2D;
+  --body-bg:      #d1d1d6;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--body-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 16px 0 28px;
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ── Role Switcher ── */
+.role-switcher {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+  justify-content: center;
+  width: 100%;
+}
+
+.rs-btn {
+  padding: 9px 26px;
+  border-radius: 24px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid var(--accent);
+  background: #fff;
+  color: var(--accent);
+  transition: all 0.15s ease;
+}
+
+.rs-btn.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ── Phone Shell ── */
+.phone-wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.phone {
+  width: 420px;
+  height: 740px;
+  background: var(--bg);
+  border-radius: 46px;
+  border: 4px solid #1c1c1e;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.32);
+  position: relative;
+}
+
+/* ── Status Bar ── */
+.status-bar {
+  background: var(--card-bg);
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.status-bar .role-chip {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+  color: var(--accent);
+}
+
+.status-bar .time {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text1);
+}
+
+.status-bar .signal {
+  font-size: 12px;
+  color: var(--text1);
+}
+
+/* ── Screen ── */
+.screen {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: var(--bg);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.screen::-webkit-scrollbar { display: none; }
+
+/* ── Pages ── */
+.page {
+  display: none;
+  padding: 16px 16px 28px;
+}
+
+.page.active {
+  display: block;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.pg-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text1);
+  margin-bottom: 14px;
+}
+
+/* ── Bottom Navigation ── */
+.bottom-nav {
+  background: var(--card-bg);
+  border-top: 1px solid var(--border);
+  display: flex;
+  height: 68px;
+  flex-shrink: 0;
+  padding: 0 4px;
+  align-items: stretch;
+}
+
+.nav-tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  cursor: pointer;
+  padding: 4px 1px 6px;
+  border: none;
+  background: transparent;
+  color: var(--text2);
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 1.1;
+  transition: color 0.15s ease;
+  min-width: 0;
+}
+
+.nav-tab i {
+  font-size: 22px;
+  line-height: 1;
+  display: block;
+  flex-shrink: 0;
+}
+
+.nav-tab span {
+  display: block;
+  text-align: center;
+  width: 100%;
+  white-space: nowrap;
+  overflow: visible;
+  font-size: 9px;
+  letter-spacing: -0.1px;
+}
+
+.nav-tab.active {
+  color: var(--accent);
+}
+
+/* ── Sub Navigation (snav) ── */
+.snav {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 14px;
+  background: #f2f2f7;
+  border-radius: 12px;
+  padding: 3px;
+}
+
+.snav-pill {
+  flex: 1;
+  text-align: center;
+  padding: 8px 4px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text2);
+  transition: all 0.15s ease;
+}
+
+.snav-pill.active {
+  background: #fff;
+  color: var(--accent);
+  border: 1px solid var(--border);
+}
+
+/* ── Filters ── */
+.filters {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  margin-bottom: 12px;
+  padding-bottom: 3px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.filters::-webkit-scrollbar { display: none; }
+
+.fpill {
+  padding: 7px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1.5px solid var(--border);
+  background: #fff;
+  color: var(--text2);
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+}
+
+.fpill.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+/* ── Search ── */
+.search-wrap {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: var(--text2);
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 12px 10px 33px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--text1);
+  background: #f2f2f7;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: var(--accent);
+  background: #fff;
+}
+
+/* ── Toast ── */
+.toast {
+  position: absolute;
+  bottom: 78px;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  background: #1c1c1e;
+  color: #fff;
+  padding: 9px 20px;
+  border-radius: 22px;
+  font-size: 13px;
+  font-weight: 500;
+  opacity: 0;
+  transition: all 0.25s ease;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 200;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ── Color Utilities ── */
+.green  { color: var(--success) !important; }
+.amber  { color: var(--warn) !important; }
+.red    { color: var(--danger) !important; }
+.purple { color: var(--accent) !important; }
+
+.green-icon  { color: var(--success); font-size: 16px; }
+.amber-icon  { color: var(--warn); }
+.red-icon    { color: var(--danger); }
+.purple-icon { color: var(--accent); }
+
+.green-bg  { background: var(--success-bg) !important; }
+.amber-bg  { background: var(--warn-bg) !important; }
+.red-bg    { background: var(--danger-bg) !important; }
+.purple-bg { background: var(--accent-light) !important; }
+
+.big-num {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text1);
+}
+
+.meta-txt {
+  font-size: 12px;
+  color: var(--text2);
+}
