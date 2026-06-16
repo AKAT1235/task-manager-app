@@ -1,0 +1,622 @@
+/* ═══════════════════════════════════════
+   COMPONENTS — Cards, Badges, Buttons, etc.
+═══════════════════════════════════════ */
+
+/* ── Cards ── */
+.card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 14px 15px;
+  margin-bottom: 10px;
+  border: 1px solid var(--border);
+}
+
+.card-list {
+  padding: 8px 13px;
+}
+
+.priority-card {
+  background: var(--card-bg);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  padding: 13px;
+  margin-bottom: 10px;
+}
+
+.benefit-card {
+  background: var(--card-bg);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  padding: 14px;
+  margin-bottom: 10px;
+}
+
+/* ── Section Headings ── */
+.sec-hd {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text1);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sec-hd i { font-size: 16px; color: var(--accent); }
+.sec-hd.amber { color: var(--warn); }
+.sec-hd.amber i { color: var(--warn); }
+
+.sect-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+/* ── Stat Grid ── */
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.stat-box {
+  background: var(--card-bg);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.stat-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.stat-icon.purple { background: var(--accent-light); color: var(--accent); }
+.stat-icon.green  { background: var(--success-bg);  color: var(--success); }
+.stat-icon.amber  { background: var(--warn-bg);     color: var(--warn); }
+.stat-icon.red    { background: var(--danger-bg);   color: var(--danger); }
+
+.stat-num { font-size: 19px; font-weight: 700; color: var(--text1); }
+.stat-lbl { font-size: 11px; color: var(--text2); margin-top: 1px; }
+
+/* ── Progress ── */
+.prog-track {
+  background: var(--border);
+  border-radius: 4px;
+  height: 6px;
+  overflow: hidden;
+  margin: 6px 0 4px;
+}
+
+.prog-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: var(--accent);
+}
+
+.pct-lbl {
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.prog-mini {
+  height: 3px;
+  border-radius: 2px;
+  background: var(--border);
+  margin-top: 5px;
+  overflow: hidden;
+}
+
+.prog-mini-fill {
+  height: 100%;
+  border-radius: 2px;
+}
+
+/* ── Greeting Card ── */
+.greeting-card {
+  background: var(--accent);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.g-name { font-size: 18px; font-weight: 700; color: #fff; }
+.g-sub  { font-size: 12px; color: rgba(255,255,255,0.75); margin-top: 3px; }
+
+.notif-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 10px;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  border-radius: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  width: 100%;
+}
+
+.notif-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #FF453A;
+  flex-shrink: 0;
+}
+
+/* ── List Rows ── */
+.list-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 0;
+  border-bottom: 1px solid #f2f2f7;
+  font-size: 13px;
+  color: var(--text1);
+}
+
+.list-row:last-child { border-bottom: none; }
+
+.list-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.list-dot.amber { background: var(--warn); }
+
+/* ── Task Row ── */
+.task-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 0;
+  border-bottom: 1px solid #f2f2f7;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.task-row:last-child { border-bottom: none; }
+
+.task-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.task-circle i { font-size: 16px; }
+
+.task-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.task-meta {
+  font-size: 11px;
+  color: var(--text2);
+  margin-top: 2px;
+}
+
+.chev {
+  font-size: 16px;
+  color: var(--text3);
+  flex-shrink: 0;
+}
+
+/* ── Priority Badges ── */
+.pbadge {
+  display: inline-flex;
+  padding: 2px 7px;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.ph { background: var(--danger-bg); color: var(--danger-text); }
+.pm { background: var(--warn-bg);   color: var(--warn-text); }
+.pl { background: var(--success-bg);color: var(--success-text); }
+
+/* ── Status Badges ── */
+.sbadge {
+  display: inline-flex;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.si { background: var(--accent-light); color: #3C3489; }
+.sc { background: var(--success-bg);   color: var(--success-text); }
+.sn { background: #f2f2f7;            color: #5e5e6e; }
+
+/* ── Employee Card ── */
+.emp-card {
+  background: var(--card-bg);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  padding: 12px 13px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  transition: box-shadow 0.15s;
+}
+
+.emp-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+
+.avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.active-badge {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--success);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+/* ── Profile Hero ── */
+.prof-hero {
+  background: var(--accent);
+  border-radius: 16px;
+  padding: 22px 16px;
+  text-align: center;
+  margin-bottom: 14px;
+  color: #fff;
+}
+
+.prof-av {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 auto 10px;
+}
+
+.prof-name { font-size: 17px; font-weight: 700; }
+.prof-role { font-size: 12px; opacity: 0.8; margin-top: 2px; }
+
+.prof-badge {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 4px 14px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ── Info Rows ── */
+.info-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 0;
+  border-bottom: 1px solid #f2f2f7;
+}
+
+.info-row:last-child { border-bottom: none; }
+.info-row > i { font-size: 18px; color: var(--text2); flex-shrink: 0; }
+
+.info-lbl { font-size: 14px; color: var(--text1); flex: 1; }
+.info-val  { font-size: 12px; color: var(--text2); text-align: right; max-width: 160px; word-break: break-all; }
+
+/* ── Task Detail Row ── */
+.task-detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f2f2f7;
+  font-size: 13px;
+}
+
+.task-detail-row:last-child { border-bottom: none; }
+
+/* ── Priority Title ── */
+.priority-title {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text1);
+}
+
+/* ── Alert Rows ── */
+.alert-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f2f2f7;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.alert-row:last-child { border-bottom: none; }
+
+.alert-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.alert-icon i { font-size: 18px; }
+
+/* ── Recognition ── */
+.feed-card {
+  background: var(--card-bg);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  padding: 13px;
+  margin-bottom: 8px;
+}
+
+.feed-badge {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--accent-light);
+  color: #3C3489;
+  margin-bottom: 7px;
+}
+
+.stars { color: var(--warn); font-size: 14px; letter-spacing: 1px; margin-top: 6px; }
+
+.award-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background: #f5f5f7;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.award-title { font-weight: 600; font-size: 13px; color: var(--text1); }
+
+/* ── Analytics Rows ── */
+.contrib-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 0;
+  border-bottom: 1px solid #f2f2f7;
+}
+
+.contrib-row:last-child { border-bottom: none; }
+
+.rank-num {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.recog-count {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-light);
+  padding: 3px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.dept-row { margin-bottom: 9px; }
+
+.dept-hd {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.dept-hd span:last-child { color: var(--accent); font-weight: 600; }
+
+/* ── Benefit Rows ── */
+.benefit-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid #f2f2f7;
+}
+
+.benefit-row:last-child { border-bottom: none; }
+
+.benefit-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  flex-shrink: 0;
+}
+
+.benefit-title { font-size: 13px; font-weight: 600; color: var(--text1); }
+.benefit-desc  { font-size: 12px; color: var(--text2); margin-top: 2px; line-height: 1.45; }
+
+/* ── Buttons ── */
+.btn-p {
+  width: 100%;
+  padding: 13px;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.btn-p:hover { opacity: 0.9; }
+
+.btn-p.ghost {
+  background: #f2f2f7;
+  color: var(--text1);
+  margin-top: 14px;
+}
+
+.btn-o {
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: #fff;
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-o:hover { background: var(--accent-light); }
+
+.add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.signout-b {
+  width: 100%;
+  padding: 13px;
+  border-radius: 12px;
+  background: #fff;
+  color: #FF3B30;
+  border: 1px solid var(--border);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+/* ── Form Inputs ── */
+.inp {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--text1);
+  background: #f5f5f7;
+  margin-bottom: 9px;
+  outline: none;
+  font-family: inherit;
+}
+
+.inp:focus {
+  border-color: var(--accent);
+  background: #fff;
+}
+
+.status-select {
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text1);
+  background: #f5f5f7;
+  margin-top: 8px;
+  outline: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.status-select:focus { border-color: var(--accent); }
+
+/* ── Employee Modal Hero ── */
+.emp-modal-hero {
+  background: var(--accent);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  margin-bottom: 14px;
+  color: #fff;
+}
+
+.emp-modal-av {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  font-weight: 700;
+  background: rgba(255,255,255,0.25);
+  margin: 0 auto 8px;
+  color: #fff;
+}
