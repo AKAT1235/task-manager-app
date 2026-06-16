@@ -1,0 +1,178 @@
+/* ═══════════════════════════════════════
+   WORKLOAD BALANCE DASHBOARD
+═══════════════════════════════════════ */
+
+.wl-summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.wl-sum-box {
+  background: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 10px 8px;
+  text-align: center;
+}
+
+.wl-sum-num {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.wl-sum-lbl {
+  font-size: 10px;
+  color: var(--text2);
+  margin-top: 2px;
+  line-height: 1.3;
+}
+
+/* ── Legend ── */
+.wl-legend {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.wl-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: #5e5e6e;
+  font-weight: 500;
+}
+
+.wl-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── Employee Workload Row ── */
+.wl-emp-row {
+  background: var(--card-bg);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  padding: 12px 13px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: box-shadow 0.15s;
+}
+
+.wl-emp-row:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.wl-emp-header {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 8px;
+}
+
+.wl-status-chip {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.wl-status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.wl-status-label {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.wl-bar-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text2);
+  margin-bottom: 3px;
+}
+
+.wl-bar-count {
+  font-weight: 700;
+}
+
+/* ── Workload Bar ── */
+.wl-bar-track {
+  height: 8px;
+  border-radius: 4px;
+  background: #f0f0f3;
+  overflow: hidden;
+  margin: 7px 0 4px;
+}
+
+.wl-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+/* ── Alert Cards ── */
+.wl-alert-card {
+  border-radius: 12px;
+  padding: 11px 13px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.wl-alert-card.red    { background: #FFF0F0; border: 1px solid #FFCDD2; }
+.wl-alert-card.yellow { background: #FFFBF0; border: 1px solid #FFE082; }
+.wl-alert-card.green  { background: #F0FFF4; border: 1px solid #B2DFDB; }
+
+.wl-alert-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.wl-alert-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text1);
+  margin-bottom: 3px;
+}
+
+.wl-alert-level {
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.wl-alert-msg {
+  font-size: 12px;
+  color: #5e5e6e;
+  line-height: 1.45;
+}
+
+/* ── Warning Banner ── */
+.wl-warning-banner {
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.wl-warning-banner.red {
+  background: #FFF0F0;
+  border: 1px solid #FFCDD2;
+  color: #A32D2D;
+}
